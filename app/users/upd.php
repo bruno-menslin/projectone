@@ -6,6 +6,8 @@
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
+    $senha_criptografada = md5($senha);
+
     $msg = '';
 
     if ($email == '') {
@@ -44,7 +46,7 @@
                 $stm_sql = $db_connection -> prepare($sql);
                 $stm_sql -> bindParam(':email', $email);
                 $stm_sql -> bindParam(':usuario', $usuario);
-                $stm_sql -> bindParam(':senha', $senha);
+                $stm_sql -> bindParam(':senha', $senha_criptografada);
                 $stm_sql -> bindParam(':id', $id);
                 
                 $result = $stm_sql -> execute();
