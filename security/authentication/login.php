@@ -1,6 +1,9 @@
 <?php
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
+
+    $senha_criptografada = md5($senha);
+
     $msg = '';
 
     if ($usuario == '') {
@@ -14,14 +17,14 @@
         
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> bindParam(':usuario', $usuario);
-        $stm_sql -> bindParam(':senha', $senha);
+        $stm_sql -> bindParam(':senha', $senha_criptografada);
         $stm_sql -> execute();
 
         if ($stm_sql -> rowCount() == 1) {
             // header("Location: ../../app/main.php");
             session_start();
             $_SESSION['usuario'] = $usuario;
-            $_SESSION['senha'] = $senha;
+            $_SESSION['senha'] = $senha_criptografada; // todas as senhas em texto claro para criptografada
             $_SESSION['idsessao'] = session_id();
 
             header("Location: ../../app/main.php");
