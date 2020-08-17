@@ -1,10 +1,12 @@
 <?php
-    include "../../security/authentication/validation.php";
+    include "../../security/authentication/validation.php"; // incluir o arquivo de validação de autenticação
     
     // receber os valores
     $email = $_POST['email'];
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
+
+    $senha_criptografada = md5($senha);
 
     $msg = '';
 
@@ -50,7 +52,7 @@
 
                 $stm_sql -> bindParam(':id', $id);
                 $stm_sql -> bindParam(':usuario', $usuario);
-                $stm_sql -> bindParam(':senha', $senha);
+                $stm_sql -> bindParam(':senha', $senha_criptografada);
                 $stm_sql -> bindParam(':email', $email);
                 $stm_sql -> bindParam(':permissao', $permissao);
                 $stm_sql -> bindParam(':ativo', $ativo);
