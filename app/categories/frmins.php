@@ -32,7 +32,7 @@
                     <td><?php echo $category['id']; ?></td>
                     <td><?php echo $category['nome']; ?></td>
                     <td><?php echo $descricao; ?></td>
-                    <td><a href="frmupd.php?id=<?php echo $category['id']; ?>">A</a></td>
+                    <td><a href="main.php?folder=categories/&file=frmupd.php&id=<?php echo $category['id']; ?>">A</a></td>
                     <td><a href="main.php?folder=categories/&file=del.php&id=<?php echo $category['id']; ?>" onclick="return valDel('categoria', '<?php echo $category['nome']; ?>')">X</a></td>
                 </tr>
         <?php

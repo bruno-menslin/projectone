@@ -1,9 +1,5 @@
-<?php
-    include "../../security/authentication/validation.php";
-    
+<?php    
     $id = $_GET['id'];
-
-    include "../../security/database/connection.php";
     
     $sql = "DELETE FROM categorias WHERE id = :id";
     
