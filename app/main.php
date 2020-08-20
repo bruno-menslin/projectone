@@ -13,10 +13,17 @@
         ?>
         <h1>PROJECT ONE</h1>
         <ul>
-            <li><a href="users/frmins.php">Usuários</a></li>
-            <li><a href="categories/frmins.php">Categorias</a></li>
-            <li><a href="products/frmins.php">Produtos</a></li>
+            <li><a href="main.php?pagina=users/frmins.php">Usuários</a></li>
+            <li><a href="main.php?pagina=categories/frmins.php">Categorias</a></li>
+            <li><a href="main.php?pagina=products/frmins.php">Produtos</a></li>
             <li><a href="../security/authentication/logout.php">Sair</a></li>
         </ul>
+        <!-- conteudo -->
+        <div>
+            <?php
+                include $_GET['pagina'];
+            ?>
+        </div>
+        <!-- /conteudo -->
     </body>
 </html>
