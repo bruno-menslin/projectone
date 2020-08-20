@@ -40,7 +40,3 @@
     <?php echo $msg; ?>
 </p>
 <a href="main.php?folder=categories/&file=<?php echo $file; ?>">Voltar</a>
-
-$file = "frmins.php"; // se preencheu todos os campos
-
-$file = "frmupd.php&id=$id"; // se não preencheu algum campo
