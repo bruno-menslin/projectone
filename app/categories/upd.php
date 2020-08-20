@@ -4,9 +4,11 @@
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
 
     $msg = '';
+    $file = "frmins.php";
 
     if ($nome == '') {
         $msg = "Preencha o campo nome.";
+        $file = "frmupd.php&id=$id";
     } else {
 
         $sql = "SELECT * FROM categorias WHERE nome = :nome AND id <> :id";
@@ -37,4 +39,8 @@
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="main.php?folder=categories/&file=frmupd.php&id=<?php echo $id; ?>">Voltar</a>
+<a href="main.php?folder=categories/&file=<?php echo $file; ?>">Voltar</a>
+
+$file = "frmins.php"; // se preencheu todos os campos
+
+$file = "frmupd.php&id=$id"; // se não preencheu algum campo
