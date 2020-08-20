@@ -1,9 +1,5 @@
-<?php
-    include "../../security/authentication/validation.php";
-    
+<?php    
     $codigo = $_GET['codigo'];
-
-    include "../../security/database/connection.php";
 
     $sql = "DELETE FROM produtos WHERE codigo = :codigo";
 
@@ -18,4 +14,4 @@
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="frmins.php">Voltar</a>
+<a href="main.php?folder=products/&file=frmins.php">Voltar</a>

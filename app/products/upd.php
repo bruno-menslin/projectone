@@ -1,6 +1,4 @@
-<?php
-    include "../../security/authentication/validation.php";
-    
+<?php    
     $codigo = $_POST['codigo'];
     $modelo = $_POST['modelo'];
     $valor = $_POST['valor'];
@@ -10,13 +8,13 @@
     $msg = '';
 
     if ($categoria_id == '') {
-        $msg = 'Escolha uma categoria.';
+        $msg = 'Selecione uma categoria.';
     } else if ($modelo == '') {
         $msg = 'Preencha o campo modelo.';
     } else if ($valor == '') {
         $msg = 'Preencha o campo valor.';
     } else {
-        include "../../security/database/connection.php";
+
         //se ja tem mesmo modelo na mesma categoria com codigo diferente (o mesmo codigo é o proprio produto em alteracao)
         $sql = "SELECT * FROM produtos WHERE modelo = :modelo AND categorias_id = :categoria_id AND codigo <> :codigo";
 
@@ -49,4 +47,4 @@
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="frmins.php">Voltar</a>
+<a href="main.php?folder=products/&file=frmins.php">Voltar</a>
