@@ -37,4 +37,4 @@
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="main.php?folder=categories/&file=frmins.php">Voltar</a>
+<a href="main.php?folder=categories/&file=frmupd.php&id=<?php echo $id; ?>">Voltar</a>
