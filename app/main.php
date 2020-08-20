@@ -4,24 +4,30 @@
         <meta charset="utf-8">
         <meta name="author" content="Bruno Menslin">
         <title>Project One - Menu</title>
+        <script src="../assets/js/main.js"></script>
     </head>
     <body>
         <?php
             include "../security/authentication/validation.php"; //sessao já é inicializada no validation.php
-            echo "Bem vindo " . $_SESSION['usuario'];
-            echo " - " . $_SESSION['idsessao'];
+            include "../security/database/connection.php";
         ?>
         <h1>PROJECT ONE</h1>
         <ul>
-            <li><a href="main.php?pagina=users/frmins.php">Usuários</a></li>
-            <li><a href="main.php?pagina=categories/frmins.php">Categorias</a></li>
-            <li><a href="main.php?pagina=products/frmins.php">Produtos</a></li>
+            <li><a href="main.php?folder=users/&file=frmins.php">Usuários</a></li>
+            <li><a href="main.php?folder=categories/&file=frmins.php">Categorias</a></li>
+            <li><a href="main.php?folder=products/&file=frmins.php">Produtos</a></li>
             <li><a href="../security/authentication/logout.php">Sair</a></li>
         </ul>
         <!-- conteudo -->
         <div>
             <?php
-                include $_GET['pagina'];
+                if (isset($_GET['folder']) && isset($_GET['file'])) {
+                    if (@!include $_GET['folder'] . $_GET['file']) { // '@' suprime o erro
+                        echo "404 NOT FOUND";
+                    }
+                } else {
+                    echo "Bem vindo " . $_SESSION['usuario'] . " - " . $_SESSION['idsessao'];
+                }
             ?>
         </div>
         <!-- /conteudo -->
