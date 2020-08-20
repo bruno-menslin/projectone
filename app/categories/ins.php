@@ -1,13 +1,10 @@
 <?php
-    include "../../security/authentication/validation.php";
-
     $nome = $_POST['nome'];
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
 
     if ($nome == '') {
         $msg = "Preencha o campo nome.";
     } else {
-        include "../../security/database/connection.php";
 
         $sql = "SELECT * FROM categorias WHERE nome = :nome";
 
@@ -40,4 +37,4 @@
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="frmins.php">Voltar</a>
+<a href="main.php?folder=categories/&file=frmins.php">Voltar</a>
