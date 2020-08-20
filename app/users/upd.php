@@ -1,6 +1,4 @@
-<?php
-    include "../../security/authentication/validation.php";
-    
+<?php    
     $id = $_POST['id'];
     $email = $_POST['email'];
     $usuario = $_POST['usuario'];
@@ -17,8 +15,6 @@
     } else if ($senha == '') {
         $msg = "Preencha o campo senha.";
     } else {
-        
-        include "../../security/database/connection.php";
 
         // verificar se o email inserido já existe no banco
         $sql = "SELECT * FROM usuarios WHERE email = :email AND id <> :id";
@@ -65,4 +61,4 @@
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="frmins.php">Voltar</a>
+<a href="main.php?folder=users/&file=frmins.php">Voltar</a>

@@ -1,9 +1,5 @@
-<?php
-    include "../../security/authentication/validation.php";
-    
+<?php    
     $id = $_GET['id'];
-    
-    include "../../security/database/connection.php";
     
     $sql = "DELETE FROM usuarios WHERE id = :id";
 
@@ -18,4 +14,4 @@
 <p>
     <?php echo $msg; ?>
 </p>
-<a href="frmins.php">Voltar</a>
+<a href="main.php?folder=users/&file=frmins.php">Voltar</a>
