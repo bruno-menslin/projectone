@@ -23,7 +23,8 @@
             <?php
                 if (isset($_GET['folder']) && isset($_GET['file'])) {
                     if (@!include $_GET['folder'] . $_GET['file']) { // '@' suprime o erro
-                        echo "404 NOT FOUND";
+                        // echo "404 NOT FOUND";
+                        include "404.php";
                     }
                 } else {
                     echo "Bem vindo " . $_SESSION['usuario'] . " - " . $_SESSION['idsessao'];
