@@ -11,7 +11,7 @@
             include "../security/authentication/validation.php"; //sessao já é inicializada no validation.php
             include "../security/database/connection.php";
         ?>
-        <h1>PROJECT ONE</h1>
+        <a href="main.php" style="text-decoration: none; color: #000; font-size: 32.5px; font-weight: bold;">PROJECT ONE</a>
         <ul>
             <li><a href="main.php?folder=users/&file=frmins.php">Usuários</a></li>
             <li><a href="main.php?folder=categories/&file=frmins.php">Categorias</a></li>
