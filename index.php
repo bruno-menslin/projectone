@@ -17,7 +17,7 @@
         </form>
         <?php if (isset($_GET['mensagem'])) { ?>
             <div>
-                <?php echo $_GET['mensagem']; ?>
+                <?php echo "! " . $_GET['mensagem']; ?>
             </div>
         <?php } ?>
     </body>

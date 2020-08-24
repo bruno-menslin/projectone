@@ -29,8 +29,13 @@
                 } else {
                     echo "Bem vindo " . $_SESSION['usuario'] . " - " . $_SESSION['idsessao'];
                 }
+                
                 if (isset($_GET['mensagem'])) {
-                    echo "<br>" . $_GET['mensagem'];
+            ?>
+                    <div class="aviso">
+                        <h1><?php echo $_GET['mensagem']; ?></h1>
+                    </div>
+            <?php
                 }
             ?>
         </div>
