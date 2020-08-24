@@ -15,7 +15,7 @@
             <input type="password" name="senha" id="senha">
             <button type="submit">Entrar</button>
         </form>
-        <?php if(isset($_GET['mensagem'])) { ?>
+        <?php if (isset($_GET['mensagem'])) { ?>
             <div>
                 <?php echo $_GET['mensagem']; ?>
             </div>
