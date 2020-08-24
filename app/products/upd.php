@@ -6,6 +6,7 @@
     $categoria_id = $_POST['categoria_id'];
 
     $msg = '';
+    $link = "main.php?folder=products/&file=frmupd.php&codigo=" . $codigo;
 
     if ($categoria_id == '') {
         $msg = 'Selecione uma categoria.';
@@ -37,14 +38,11 @@
             $result = $stm_sql -> execute();
 
             $msg = ($result) ? "Alteração efetuada com sucesso!" : "Falha ao alterar!";
+
+            $link = "main.php?folder=products/&file=frmins.php";
         } else {
             $msg = "Este modelo já está cadastrado no banco de dados.";
         }
     }
+    header("Location: " . $link . "&mensagem=" . $msg);
 ?>
-
-<h1>Aviso!</h1>
-<p>
-    <?php echo $msg; ?>
-</p>
-<a href="main.php?folder=products/&file=frmins.php">Voltar</a>
