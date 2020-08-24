@@ -7,6 +7,7 @@
     $senha_criptografada = md5($senha);
 
     $msg = '';
+    $link = "main.php?folder=users/&file=frmupd.php&id=" . $id;
 
     if ($email == '') {
         $msg = "Preencha o campo e-mail.";
@@ -48,6 +49,8 @@
                 $result = $stm_sql -> execute();
 
                 $msg = ($result) ? "Alteração efetuada com sucesso!" : "Falha ao alterar!";
+
+                $link = "main.php?folder=users/&file=frmins.php";
             } else {
                 $msg = "Este usuário já está cadastrado no banco de dados.";
             }
@@ -55,10 +58,5 @@
             $msg = "Este email já está cadastrado no banco de dados.";
         }
     }
+    header("Location: " . $link . "&mensagem=" . $msg);
 ?>
-
-<h1>Aviso!</h1>
-<p>
-    <?php echo $msg; ?>
-</p>
-<a href="main.php?folder=users/&file=frmins.php">Voltar</a>

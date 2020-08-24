@@ -62,13 +62,6 @@
         } else {
             $msg = "Este email já está cadastrado no banco de dados.";
         }
-        
     }
-
+    header("Location: main.php?folder=users/&file=frmins.php&mensagem=" . $msg);
 ?>
-
-<h1>Aviso!</h1>
-<p>
-    <?php echo $msg; ?>
-</p>
-<a href="main.php?folder=users/&file=frmins.php">Voltar</a>
