@@ -4,11 +4,10 @@
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
 
     $msg = '';
-    $file = "frmins.php";
+    $link = "main.php?folder=categories/&file=frmupd.php&id=" . $id;
 
     if ($nome == '') {
         $msg = "Preencha o campo nome.";
-        $file = "frmupd.php&id=$id";
     } else {
 
         $sql = "SELECT * FROM categorias WHERE nome = :nome AND id <> :id";
@@ -29,14 +28,11 @@
             $result = $stm_sql -> execute();
             
             $msg = ($result) ? "Alteração efetuada com sucesso!" : "Falha ao alterar!";
+
+            $link = "main.php?folder=categories/&file=frmins.php";
         } else {
             $msg = "Esta categoria já está cadastrada no banco de dados.";
         }
     }
+    header("Location: " . $link . "&mensagem=" . $msg);
 ?>
-
-<h1>Aviso!</h1>
-<p>
-    <?php echo $msg; ?>
-</p>
-<a href="main.php?folder=categories/&file=<?php echo $file; ?>">Voltar</a>

@@ -8,10 +8,6 @@
     $result = $stm_sql -> execute();
 
     $msg = ($result) ? "Categoria excluída com sucesso!" : "Falha ao excluir categoria!";
-?>
 
-<h1>Aviso!</h1>
-<p>
-    <?php echo $msg; ?>
-</p>
-<a href="main.php?folder=categories/&file=frmins.php">Voltar</a>
+    header("Location: main.php?folder=categories/&file=frmins.php&mensagem=" . $msg);
+?>

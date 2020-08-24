@@ -31,10 +31,5 @@
             $msg = "Esta categoria já está cadastrada no banco de dados.";
         }
     }
+    header("Location: main.php?folder=categories/&file=frmins.php&mensagem=" . $msg);
 ?>
-
-<h1>Aviso!</h1>
-<p>
-    <?php echo $msg; ?>
-</p>
-<a href="main.php?folder=categories/&file=frmins.php">Voltar</a>
