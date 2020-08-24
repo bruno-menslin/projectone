@@ -7,7 +7,7 @@
     $stm_sql -> bindParam(':id', $id);
     $result = $stm_sql -> execute();
 
-    $msg = ($result) ? "&mensagem=Usuário excluído com sucesso!" : "&mensagem=Falha ao excluir usuário!";
+    $msg = ($result) ? "Usuário excluído com sucesso!" : "Falha ao excluir usuário!";
 
-    header("Location: main.php?folder=users/&file=frmins.php" . $msg);
+    header("Location: main.php?folder=users/&file=frmins.php&mensagem=" . $msg);
 ?>
