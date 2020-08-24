@@ -1,3 +1,4 @@
+<?php include "../../security/authentication/validationapp.php"; ?>
 <h2>Cadastro de Usuário</h2>
 <form action="main.php?folder=users/&file=ins.php" method="post" name="insuser"> <!-- método post -->
     <label for="email">E-mail</label>

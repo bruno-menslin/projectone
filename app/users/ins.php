@@ -1,4 +1,6 @@
 <?php
+    include "../../security/authentication/validationapp.php"; // validacao de usuario nao autenticado
+    
     // receber os valores
     $email = $_POST['email'];
     $usuario = $_POST['usuario'];

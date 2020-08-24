@@ -1,4 +1,6 @@
 <?php
+    include "../../security/authentication/validationapp.php";
+    
     $id = $_GET['id'];
 
     $sql = "SELECT email, usuario FROM usuarios WHERE id = :id";

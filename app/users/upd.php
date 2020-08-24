@@ -1,4 +1,6 @@
 <?php    
+    include "../../security/authentication/validationapp.php";
+
     $id = $_POST['id'];
     $email = $_POST['email'];
     $usuario = $_POST['usuario'];
