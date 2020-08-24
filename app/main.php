@@ -22,12 +22,15 @@
         <div>
             <?php
                 if (isset($_GET['folder']) && isset($_GET['file'])) {
-                    if (@!include $_GET['folder'] . $_GET['file']) { // '@' suprime o erro
+                    if (@!include $_GET['folder'] . $_GET['file']) { // '@' suprime erros
                         // echo "404 NOT FOUND";
                         include "404.php";
                     }
                 } else {
                     echo "Bem vindo " . $_SESSION['usuario'] . " - " . $_SESSION['idsessao'];
+                }
+                if (isset($_GET['mensagem'])) {
+                    echo "<br>" . $_GET['mensagem'];
                 }
             ?>
         </div>
