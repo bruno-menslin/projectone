@@ -12,7 +12,9 @@
 </form>
 <h2>Usuários Cadastrados</h2>
 <?php
-    $stm_sql = $db_connection -> prepare("SELECT * FROM usuarios"); // transforma a sintaxe em intrução e armazena na variável $stm_sql
+    $sql = "SELECT * FROM usuarios"; // sintaxe sql
+
+    $stm_sql = $db_connection -> prepare($sql); // transforma a sintaxe em intrução e armazena na variável $stm_sql
 
     $stm_sql -> execute(); // executa a instrução
 
