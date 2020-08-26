@@ -6,8 +6,6 @@
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
-    $senha_criptografada = md5($senha);
-
     $msg = '';
 
     // validar os campos
@@ -41,16 +39,16 @@
 
                 // cadastrar usuário no banco
                 $sql = "INSERT INTO usuarios VALUES (:id, :usuario, :senha, :email, :permissao, :ativo)"; // variável que armazena a sintaxe sql (apenas uma string). Usar parâmetros para evitar sql injection
-
-                $stm_sql = $db_connection -> prepare($sql); // transformar a sintaxe (string) em instrução, para atribuir valores aos parâmetros com bindParam
                 
                 $id = null; // bindParam só aceita variáveis
                 $permissao = 0;
                 $ativo = 0;
 
+                $stm_sql = $db_connection -> prepare($sql); // transformar a sintaxe (string) em instrução, para atribuir valores aos parâmetros com bindParam
+
                 $stm_sql -> bindParam(':id', $id);
                 $stm_sql -> bindParam(':usuario', $usuario);
-                $stm_sql -> bindParam(':senha', $senha_criptografada);
+                $stm_sql -> bindParam(':senha', md5($senha));
                 $stm_sql -> bindParam(':email', $email);
                 $stm_sql -> bindParam(':permissao', $permissao);
                 $stm_sql -> bindParam(':ativo', $ativo);
