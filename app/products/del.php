@@ -1,4 +1,6 @@
 <?php    
+    include "../../security/authentication/validationapp.php";
+    
     $codigo = $_GET['codigo'];
 
     $sql = "DELETE FROM produtos WHERE codigo = :codigo";

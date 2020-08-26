@@ -1,5 +1,6 @@
-<h2>Cadastro de Produto</h2>
 <?php
+    include "../../security/authentication/validationapp.php";
+
     $sql = "SELECT id, nome FROM categorias";
 
     $stm_sql = $db_connection -> prepare($sql);
@@ -7,6 +8,7 @@
 
     $categories = $stm_sql -> fetchAll(PDO::FETCH_ASSOC);
 ?>
+<h2>Cadastro de Produto</h2>
 <form name="insproduct" action="main.php?folder=products/&file=ins.php" method="post">
     <label for="categoria">Categoria</label>
     <select name="categoria_id" id="categoria">

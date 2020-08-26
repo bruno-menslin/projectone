@@ -1,18 +1,22 @@
-<h2>Alteração de Produto</h2>
 <?php
+    include "../../security/authentication/validationapp.php";
+
     $codigo = $_GET['codigo'];
 
     $sql = "SELECT * FROM produtos WHERE codigo = :codigo";
+
     $stm_sql = $db_connection -> prepare($sql);
     $stm_sql -> bindParam(':codigo', $codigo);
     $stm_sql -> execute();
     $product = $stm_sql -> fetch(PDO::FETCH_ASSOC);        
     
     $sql = "SELECT id, nome FROM categorias";
+
     $stm_sql = $db_connection -> prepare($sql);
     $stm_sql -> execute();
     $categories = $stm_sql -> fetchAll(PDO::FETCH_ASSOC);
 ?>
+<h2>Alteração de Produto</h2>
 <form name="updproduct" action="main.php?folder=products/&file=upd.php" method="post">
     <input type="hidden" name="codigo" value="<?php echo $codigo ?>">
     <label for="categoria">Categoria</label>
