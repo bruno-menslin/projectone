@@ -24,9 +24,9 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>E-mail</th>
             <th>Usuário</th>
             <th>Senha</th>
-            <th>E-mail</th>
             <th>Permissão</th>
             <th>Ativo</th>
             <th>Alterar</th>
@@ -49,9 +49,9 @@
         ?>
                 <tr>
                     <td><?php echo $user['id']; ?></td>
+                    <td><?php echo $user['email']; ?></td>
                     <td><?php echo $user['usuario']; ?></td>
                     <td><?php echo $user['senha']; ?></td>
-                    <td><?php echo $user['email']; ?></td>
                     <td><?php echo $permissao; ?></td>
                     <td><?php echo $ativo; ?></td>
                     <td><a href="main.php?folder=users/&file=frmupd.php&id=<?php echo $user['id'];?>">A</a></td>
