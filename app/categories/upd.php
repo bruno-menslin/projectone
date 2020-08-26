@@ -1,4 +1,6 @@
 <?php    
+    include "../../security/authentication/validationapp.php";
+    
     $id = $_POST['id'];
     $nome = $_POST['nome'];
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;

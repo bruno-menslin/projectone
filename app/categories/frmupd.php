@@ -1,4 +1,6 @@
 <?php
+    include "../../security/authentication/validationapp.php";
+    
     $id = $_GET['id'];
 
     $sql = "SELECT nome, descricao FROM categorias WHERE id = :id";

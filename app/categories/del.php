@@ -1,4 +1,6 @@
-<?php    
+<?php   
+    include "../../security/authentication/validationapp.php"; 
+    
     $id = $_GET['id'];
     
     $sql = "DELETE FROM categorias WHERE id = :id";

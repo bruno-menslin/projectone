@@ -1,3 +1,4 @@
+<?php include "../../security/authentication/validationapp.php"; ?>
 <h2>Cadastro de Categoria</h2>
 <form action="main.php?folder=categories/&file=ins.php" method="post" name="inscategory">
     <label for="nome">Nome</label>            
