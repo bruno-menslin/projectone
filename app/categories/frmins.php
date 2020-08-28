@@ -1,44 +1,58 @@
 <?php include "../../security/authentication/validationapp.php"; ?>
-<h2>Cadastro de Categoria</h2>
-<form action="main.php?folder=categories/&file=ins.php" method="post" name="inscategory">
-    <label for="nome">Nome</label>            
-    <input type="text" name="nome" id="nome">
-    <label for="descricao">Descrição</label>            
-    <input type="text" name="descricao" id="descricao">
-    <button type="reset">Limpar</button>
-    <button type="submit">Enviar</button>
-</form>
-<h2>Categorias Cadastradas</h2>
-<table border=1>
-    <thead>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th>Alterar</th>
-        <th>Excluir</th>
-    </thead>
-    <tbody>
-        <?php            
-            $sql = "SELECT id, nome, descricao FROM categorias";
+<div class="col-6">
+    <h2>Cadastro de Categorias</h2>   
+    <form name="inscategory" action="main.php?folder=categories/&file=ins.php" method="POST">
+        <div class="form-group">
+            <label for="idnome">Nome</label>
+            <input type="text" class="form-control" id="idnome" name="nome">
+        </div>
+        <div class="form-group">
+            <label for="iddescricao">Descrição</label>
+            <input type="text" class="form-control" id="iddescricao" name="descricao">
+        </div>
+        <button type="reset" class="btn btn-warning">Limpar</button>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+    <br>
+    <a href="main.php">Voltar</a>
+</div>
+<div class="col-6">
+    <h2>Categorias Cadastradas</h2>
+    <?php
+        $sql = "SELECT id, nome, descricao FROM categorias";
 
-            $stm_sql = $db_connection -> prepare($sql);
-            $stm_sql -> execute();
+        $stm_sql = $db_connection -> prepare($sql);
+        $stm_sql -> execute();
 
-            $categories = $stm_sql -> fetchAll(PDO::FETCH_ASSOC);
-
-            foreach ($categories as $category) {
-                $descricao = ($category['descricao'] == null) ? "-" : $category['descricao'];
-        ?>
+        $categories = $stm_sql -> fetchAll(PDO::FETCH_ASSOC);
+    ?>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td><?php echo $category['id']; ?></td>
-                    <td><?php echo $category['nome']; ?></td>
-                    <td><?php echo $descricao; ?></td>
-                    <td><a href="main.php?folder=categories/&file=frmupd.php&id=<?php echo $category['id']; ?>">A</a></td>
-                    <td><a href="main.php?folder=categories/&file=del.php&id=<?php echo $category['id']; ?>" onclick="return valDel('categoria', '<?php echo $category['nome']; ?>')">X</a></td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Alterar</th>
+                    <th scope="col">Excluir</th>
                 </tr>
-        <?php
-            }
-        ?>
-    </tbody>
-</table>
-<a href="main.php">Voltar</a>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($categories as $category) {
+                        $description = ($category['descricao'] == null) ? "-" : $category['descricao'];
+                ?>
+                        <tr>
+                            <th scope="row"><?php echo $category['id']; ?></th>
+                            <td><?php echo $category['nome']; ?></td>
+                            <td><?php echo $description; ?></td>
+                            <td><a href="main.php?folder=categories/&file=frmupd.php&id=<?php echo $category['id']; ?>"><img src="../assets/images/editar.png" height="20px" width="20px"></img></a></td>
+                            <td><a href="main.php?folder=categories/&file=del.php&id=<?php echo $category['id']; ?>" onclick="return valDel('categoria', '<?php echo $category['nome']; ?>')"><img src="../assets/images/excluir.png" height="20px" width="20px"></a></td>
+                        </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>

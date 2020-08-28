@@ -3,11 +3,14 @@
     
     $nome = $_POST['nome'];
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
+    
+    $link = "main.php?folder=categories/&file=frmins.php";
+    $msg = '';
+    $status = "danger";
 
     if ($nome == '') {
         $msg = "Preencha o campo nome.";
     } else {
-
         $sql = "SELECT * FROM categorias WHERE nome = :nome";
 
         $stm_sql = $db_connection -> prepare($sql);
@@ -15,23 +18,27 @@
         $stm_sql -> execute();
 
         if ($stm_sql -> rowCount() == 0) {
+            $id = null;
 
             $sql = "INSERT INTO categorias VALUES (:id, :nome, :descricao)";
 
             $stm_sql = $db_connection -> prepare($sql);
-
-            $id = null;
-
             $stm_sql -> bindParam(':id', $id);
             $stm_sql -> bindParam(':nome', $nome);
             $stm_sql -> bindParam(':descricao', $descricao);
             
             $result = $stm_sql -> execute();
 
-            $msg = ($result) ? "Cadastro efetuado com sucesso!" : "Falha ao cadastrar!";
+            if ($result) {
+                $msg = "Cadastro efetuado com sucesso!";
+                $status = "success";
+            } else {
+                $msg = "Falha ao cadastrar!";
+            }
         } else {
             $msg = "Esta categoria já está cadastrada no banco de dados.";
+            $status = "warning";
         }
     }
-    header("Location: main.php?folder=categories/&file=frmins.php&mensagem=" . $msg);
+    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
 ?>

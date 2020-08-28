@@ -5,13 +5,13 @@
     $nome = $_POST['nome'];
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
 
-    $msg = '';
     $link = "main.php?folder=categories/&file=frmupd.php&id=" . $id;
+    $msg = '';
+    $status = "danger";
 
     if ($nome == '') {
         $msg = "Preencha o campo nome.";
     } else {
-
         $sql = "SELECT * FROM categorias WHERE nome = :nome AND id <> :id";
 
         $stm_sql = $db_connection -> prepare($sql);
@@ -29,12 +29,17 @@
 
             $result = $stm_sql -> execute();
             
-            $msg = ($result) ? "Alteração efetuada com sucesso!" : "Falha ao alterar!";
-
+            if ($result) {
+                $msg = "Alteração efetuada com sucesso!";
+                $status = "success";
+            } else {
+                $msg = "Falha ao alterar!";
+            }
             $link = "main.php?folder=categories/&file=frmins.php";
         } else {
             $msg = "Esta categoria já está cadastrada no banco de dados.";
+            $status = "warning";
         }
     }
-    header("Location: " . $link . "&mensagem=" . $msg);
+    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
 ?>
