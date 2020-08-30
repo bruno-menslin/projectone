@@ -15,7 +15,7 @@
         <header>
             <nav class="navbar navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">
-                    <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                    <img src="https://logodownload.org/wp-content/uploads/2016/10/php-logo-2.png" width="60" height="30" class="d-inline-block align-top" alt="" loading="lazy">
                     Project One
                 </a>
             </nav>
