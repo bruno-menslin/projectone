@@ -5,5 +5,4 @@
     } catch (PDOexception $error) { // se não der certo, armazenar o erro (exceção) em uma variável
         die("Falha ao conectar ao banco de dados: " . $error -> getCode()); // retorna o código da exceção 
     }
-
 ?>
