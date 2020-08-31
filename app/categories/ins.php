@@ -1,6 +1,7 @@
 <?php
     include "../../security/authentication/validationapp.php";
     
+    $id = null;
     $nome = $_POST['nome'];
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
     
@@ -18,8 +19,6 @@
         $stm_sql -> execute();
 
         if ($stm_sql -> rowCount() == 0) {
-            $id = null;
-
             $sql = "INSERT INTO categorias VALUES (:id, :nome, :descricao)";
 
             $stm_sql = $db_connection -> prepare($sql);
