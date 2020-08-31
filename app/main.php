@@ -13,8 +13,6 @@
         <link rel="stylesheet" href="../assets/css/main.css">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script href="../assets/js/bootstrap.js"></script>
-        <script src="../assets/js/main.js"></script>
     </head>
     <body>
         <header>            
@@ -33,14 +31,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="main.php?folder=products/&file=frmins.php">Produtos</a>
-                        </li>                        
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../security/authentication/logout.php">Sair</a>
+                        </li>
                     </ul>
                 </div>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../security/authentication/logout.php">Sair</a>
-                    </li>
-                </ul>
+                
             </nav>
         </header>
         <div class="container-fluid mt-3">
@@ -60,7 +59,6 @@
                     ?>
                 </div>                
             </div>
-
             <div class="row">
                 <?php
                     if (isset($_GET['folder']) && isset($_GET['file'])) {
@@ -73,5 +71,7 @@
                 ?>                    
             </div>            
         </div>
+        <script src="../assets/js/bootstrap.js"></script>
+        <script src="../assets/js/main.js"></script>
     </body>
 </html>
