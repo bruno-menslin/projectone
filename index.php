@@ -13,7 +13,10 @@
     <body class="d-flex align-items-center min-vh-100">
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-md-2">
+                <div class="div-form-title col-sm-12 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <h1 class="form-title d-flex align-items-center">PROJECT ONE</h1>
+                </div>
+                <div class="col-sm-8 col-md-6 col-lg-3 col-xl-2">
                     <form name="auth" action="security/authentication/login.php" method="POST">
                         <div class="form-group">
                             <label for="idusuario">Usuário</label>
@@ -23,7 +26,7 @@
                             <label for="idsenha">Senha</label>
                             <input type="password" class="form-control" id="idsenha" name="senha">
                         </div>
-                        <button type="submit" class="btn btn-success">Entrar</button>
+                        <button type="submit" class="btn btn-login">Entrar</button>
                     </form>
                     <?php 
                         if (isset($_GET['mensagem'])) {
@@ -33,7 +36,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="modal fade" id="modalAtencao" tabindex="-1" role="dialog" aria-labelledby="modalAtencaoCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -52,7 +54,6 @@
                 </div>
             </div>
         </div>
-        
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/main.js"></script>
     </body>
