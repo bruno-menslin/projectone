@@ -1,7 +1,53 @@
+/*
+Data: 31/08/2020
+Desc: Arquivo princiapl de estilos do ProjectOne
+Autor: Bruno Menslin
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap');
+
 h1 {
     color: rgb(55, 55, 55);
 }
 
 h2 {
     color: rgb(83, 83, 83);
+}
+
+.form-title {
+    font-family: 'Lato';
+    font-size: 5rem;
+    max-width: 487px;
+}
+
+.btn-login:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: hsl(225, 28%, 44%);
+}
+
+.btn-login {
+    color: #fff;
+    background-color: hsl(225, 27%, 51%);
+    border-color: hsl(225, 26%, 48%);
+}
+
+@media (min-width: 990px) and (max-width: 1400px) {
+    .div-form-title {
+        margin-right: 2rem;
+    }
+}
+
+@media (max-width: 990px) {
+    .form-title {
+        min-width: 490px;
+        margin-bottom: 2rem;
+    }    
+}
+
+@media (max-width: 520px) {
+    .form-title {
+        min-width: 0;
+        max-width: 487px;
+    }
 }
