@@ -27,7 +27,7 @@
                             <a class="nav-link" href="main.php?folder=users/&file=frmins.php">Usuários</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="main.php?folder=categories/&file=frmins.php">Categorias<!--<span class="sr-only">(Página atual)</span>--></a>
+                            <a class="nav-link" href="main.php?folder=categories/&file=frmins.php">Categorias<!--<span class="sr-only">(Página atual)</span>--></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="main.php?folder=products/&file=frmins.php">Produtos</a>
@@ -39,7 +39,6 @@
                         </li>
                     </ul>
                 </div>
-                
             </nav>
         </header>
         <div class="container-fluid mt-3">
