@@ -1,5 +1,5 @@
 <?php include "../../security/authentication/validationapp.php"; ?>
-<div class="col-6">
+<div class="col-sm-12 col-lg-6">
     <h2>Cadastro de Categorias</h2>   
     <form name="inscategory" action="main.php?folder=categories/&file=ins.php" method="POST">
         <div class="form-group">
@@ -16,7 +16,7 @@
     <br>
     <a href="main.php">Voltar</a>
 </div>
-<div class="col-6">
+<div class="col-sm-12 col-lg-6">
     <h2>Categorias Cadastradas</h2>
     <?php
         $sql = "SELECT id, nome, descricao FROM categorias";
