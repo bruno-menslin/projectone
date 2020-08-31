@@ -65,9 +65,14 @@
                             include "404.php";
                         }
                     } else {
-                        echo "Bem vindo " . $_SESSION['usuario'] . " - " . $_SESSION['idsessao'];
+                ?>
+                        <div class="col-md-12 mt-3">
+                            <h1>Bem vindo <?php echo $_SESSION['usuario']; ?>!</h1>
+                            <h6><?php echo $_SESSION['idsessao']; ?></h6>
+                        </div>
+                <?php
                     }
-                ?>                    
+                ?>                
             </div>            
         </div>
         <script src="../assets/js/bootstrap.js"></script>
