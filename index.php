@@ -9,20 +9,11 @@
         <link rel="stylesheet" href="assets/css/main.css">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script href="assets/js/bootstrap.js"></script>
     </head>
-    <body>        
-        <header>
-            <nav class="navbar navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
-                    <img src="https://logodownload.org/wp-content/uploads/2016/10/php-logo-2.png" width="60" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-                    Project One
-                </a>
-            </nav>
-        </header>
-        <div class="container-fluid mt-3">        
+    <body class="d-flex align-items-center min-vh-100">
+        <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <form name="auth" action="security/authentication/login.php" method="POST">
                         <div class="form-group">
                             <label for="idusuario">Usuário</label>
@@ -34,14 +25,35 @@
                         </div>
                         <button type="submit" class="btn btn-success">Entrar</button>
                     </form>
-
-                    <?php if (isset($_GET['mensagem'])) { ?>
-                        <div class="alert alert-danger sm-margin-top" role="alert">
-                            <?php echo "! " . $_GET['mensagem']; ?>
-                        </div>
-                    <?php } ?>
+                    <?php 
+                        if (isset($_GET['mensagem'])) {
+                            echo "<script> $(document).ready( ()=>$('#modalAtencao').modal('show') ) </script>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade" id="modalAtencao" tabindex="-1" role="dialog" aria-labelledby="modalAtencaoCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Atenção!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php echo $_GET['mensagem']; ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/main.js"></script>
     </body>
 </html>
