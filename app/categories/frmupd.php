@@ -11,7 +11,7 @@
 
     $category = $stm_sql -> fetch(PDO::FETCH_ASSOC);
 ?>
-<div class="col-6">
+<div class="col-sm-12 col-lg-6">
     <h2>Alteração de Categoria</h2>
     <form name="updcategory" action="main.php?folder=categories/&file=upd.php" method="POST">
         <input type="hidden" name="id" value="<?php echo $id ?>">
