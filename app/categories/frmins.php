@@ -46,7 +46,7 @@
                             <th scope="row"><?php echo $category['id']; ?></th>
                             <td><?php echo $category['nome']; ?></td>
                             <td><?php echo $description; ?></td>
-                            <td><a href="main.php?folder=categories/&file=frmupd.php&id=<?php echo $category['id']; ?>"><img src="../assets/images/editar.png" height="20px" width="20px"></img></a></td>
+                            <td><a href="main.php?folder=categories/&file=frmupd.php&id=<?php echo $category['id']; ?>"><img src="../assets/images/editar.png" height="20px" width="20px"></a></td>
                             <td><a href="main.php?folder=categories/&file=del.php&id=<?php echo $category['id']; ?>" onclick="return valDel('categoria', '<?php echo $category['nome']; ?>')"><img src="../assets/images/excluir.png" height="20px" width="20px"></a></td>
                         </tr>
                 <?php
