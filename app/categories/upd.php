@@ -5,7 +5,7 @@
     $nome = $_POST['nome'];
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
 
-    $link = "main.php?folder=categories/&file=frmupd.php&id=" . $id;
+    $link = "main.php?folder=categories/&file=frmupd.php" . "&id=" . $id;
     $msg = '';
     $status = "danger";
 
