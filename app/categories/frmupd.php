@@ -14,7 +14,7 @@
 <div class="col-sm-12 col-lg-6">
     <h2>Alteração de Categoria</h2>
     <form name="updcategory" action="main.php?folder=categories/&file=upd.php" method="POST">
-        <input type="hidden" name="id" value="<?php echo $id ?>">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
         <div class="form-group">
             <label for="idnome">Nome</label>
             <input type="text" class="form-control" id="idnome" name="nome" value="<?php echo $category['nome']; ?>">
