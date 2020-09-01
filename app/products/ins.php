@@ -7,7 +7,9 @@
     $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : NULL;
     $categoria_id = $_POST['categoria_id'];
 
+    $link = "main.php?folder=products/&file=frmins.php";
     $msg = '';
+    $status = "danger";
 
     if ($categoria_id == '') {
         $msg = 'Selecione uma categoria.';
@@ -16,7 +18,6 @@
     } else if ($valor == '') {
         $msg = 'Preencha o campo valor.';
     } else {
-
         $sql = "SELECT * FROM produtos WHERE modelo = :modelo AND categorias_id = :categoria_id";
 
         $stm_sql = $db_connection -> prepare($sql);
@@ -36,10 +37,16 @@
             
             $result = $stm_sql -> execute();
 
-            $msg = ($result) ? "Cadastro efetuado com sucesso!" : "Falha ao cadastrar!";
+            if ($result) {
+                $msg = "Cadastro efetuado com sucesso!";
+                $status = "success";
+            } else {
+                $msg = "Falha ao cadastrar!";
+            }
         } else {
             $msg = "Este modelo já está cadastrado na categoria selecionada.";
+            $status = "warning";
         }
     }
-    header("Location: main.php?folder=products/&file=frmins.php&mensagem=" . $msg);
+    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
 ?>
