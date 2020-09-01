@@ -6,8 +6,9 @@
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
+    $link = "main.php?folder=users/&file=frmupd.php" . "&id=" . $id;
     $msg = '';
-    $link = "main.php?folder=users/&file=frmupd.php&id=" . $id;
+    $status = "danger";
 
     if ($email == '') {
         $msg = "Preencha o campo e-mail.";
@@ -16,7 +17,6 @@
     } else if ($senha == '') {
         $msg = "Preencha o campo senha.";
     } else {
-
         // verificar se o email inserido já existe no banco
         $sql = "SELECT * FROM usuarios WHERE email = :email AND id <> :id";
 
@@ -26,7 +26,6 @@
         $stm_sql -> execute();
 
         if ($stm_sql -> rowCount() == 0) {
-
             // verificar se o usuário inserido já existe no banco
             $sql = "SELECT * FROM usuarios WHERE usuario = :usuario AND id <> :id";
 
@@ -36,7 +35,6 @@
             $stm_sql -> execute();
 
             if ($stm_sql -> rowCount() == 0) {
-                
                 // atualizar o cadastro do usuário no banco
                 $sql = "UPDATE usuarios SET email = :email, usuario = :usuario, senha = :senha WHERE id = :id";
 
@@ -48,15 +46,21 @@
                 
                 $result = $stm_sql -> execute();
 
-                $msg = ($result) ? "Alteração efetuada com sucesso!" : "Falha ao alterar!";
-
+                if ($result) {
+                    $msg = "Alteração efetuada com sucesso!";
+                    $status = "success";
+                } else {
+                    $msg = "Falha ao alterar!";
+                }
                 $link = "main.php?folder=users/&file=frmins.php";
             } else {
                 $msg = "Este usuário já está cadastrado no banco de dados.";
+                $status = "warning";
             }
         } else {
             $msg = "Este email já está cadastrado no banco de dados.";
+            $status = "warning";
         }
     }
-    header("Location: " . $link . "&mensagem=" . $msg);
+    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
 ?>

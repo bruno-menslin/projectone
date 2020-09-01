@@ -11,16 +11,25 @@
 
     $user = $stm_sql -> fetch(PDO::FETCH_ASSOC); // o resultado da busca será apenas um resultado, por isso fetch, não fetchAll
 ?>
-<h2>Alteração de Usuário</h2>
-<form action="main.php?folder=users/&file=upd.php" method="post" name="upduser">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
-    <label for="email">E-mail</label>
-    <input type="text" name="email" id="email" value="<?php echo $user['email']; ?>">
-    <label for="usuario">Usuário</label>
-    <input type="text" name="usuario" id="usuario" value="<?php echo $user['usuario']; ?>">
-    <label for="senha">Senha</label>
-    <input type="password" name="senha" id="senha">
-    <button type="reset">Desfazer</button>
-    <button type="submit">Enviar</button>
-</form>
-<a href="main.php?folder=users/&file=frmins.php">Voltar</a>
+<div class="col-sm-12 col-lg-6">
+    <h2>Alteração de Usuário</h2>
+    <form name="upduser" action="main.php?folder=users/&file=upd.php" method="POST">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <div class="form-group">
+            <label for="idemail">E-mail</label>
+            <input type="text" class="form-control" id="idemail" name="email" value="<?php echo $user['email']; ?>">
+        </div>
+        <div class="form-group">
+            <label for="idusuario">Usuário</label>
+            <input type="text" class="form-control" id="idusuario" name="usuario" value="<?php echo $user['usuario']; ?>">
+        </div>
+        <div class="form-group">
+            <label for="idsenha">Senha</label>
+            <input type="password" class="form-control" id="idsenha" name="senha">
+        </div>
+        <button type="reset" class="btn btn-warning">Desfazer</button>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+    <br>
+    <a href="main.php?folder=users/&file=frmins.php">Voltar</a>
+</div>
