@@ -1,5 +1,6 @@
 <?php
-    include "../../security/authentication/validationapp.php";
+    include "../../security/database/connection.php";
+    include "../../security/authentication/validation.php";
     
     $id = null; // bindParam só aceita variáveis
     $email = $_POST['email'];
@@ -8,9 +9,7 @@
     $permissao = 0;
     $ativo = 0;
 
-    $link = "main.php?folder=users/&file=frmins.php";
     $msg = '';
-    $status = "danger";
 
     if ($email == '') {
         $msg = "Preencha o campo e-mail.";
@@ -54,18 +53,15 @@
 
                 if ($result) {  // verificar se a intrução foi executada com sucesso
                     $msg = "Cadastro efetuado com sucesso!";
-                    $status = "success";
                 } else {
                     $msg = "Falha ao cadastrar!";
                 }
             } else {
                 $msg = "Este usuário já está cadastrado no banco de dados.";
-                $status = "warning";
             }
         } else {
             $msg = "Este email já está cadastrado no banco de dados.";
-            $status = "warning";
         }
     }
-    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
+    echo $msg;
 ?>
