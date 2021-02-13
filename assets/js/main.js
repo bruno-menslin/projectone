@@ -1,6 +1,5 @@
 $(document).ready(() => { //quando o documento for carregado
     loadUsers();
-
     $("#alert").fadeToggle(0); //começar não ocupando espaço
     
     $('form').submit(function(e) { //remover comportamento padrão dos formulários
@@ -8,7 +7,12 @@ $(document).ready(() => { //quando o documento for carregado
     });
 });
 
-$('#form-insuser').submit(() => { //quando o botão 'enviar' for clicado
+// PAGE - USERS
+$("#btn-add-user").click(() => {
+    $("#add-user-modal").modal('show');
+});
+
+$('#btn-submit-form-insuser').click(() => { //quando o botão 'cadastrar' for clicado
     
     var email = $('#idemail').val(); //armazenando as entradas do usuário
     var usuario = $('#idusuario').val();
@@ -20,23 +24,20 @@ $('#form-insuser').submit(() => { //quando o botão 'enviar' for clicado
         data: {email: email, usuario: usuario, senha: senha}
     }).done(function(result) {
         loadUsers();
+        $("#alert").removeClass(); //remove todas as classes
 
         if (result == "Cadastro efetuado com sucesso!") {
-            $('form').trigger("reset"); //limpa os inputs do formulário
+            $("#form-insuser").trigger("reset"); //limpa os inputs do formulário
             var status = "success";
         } else {
             var status = "danger";
         }
 
-        $("#alert").addClass("alert-" + status).html(result).fadeIn(700); //apresenta o alerta
+        $("#alert").addClass("alert alert-" + status).html(result).fadeIn(300); //apresenta o alerta
 
         setTimeout(() => { //remove o alerta
-            $("#alert").fadeOut(700);
+            $("#alert").fadeOut(300);
         }, 3000);
-
-        setTimeout(() => { //remove a classe do alerta
-            $("#alert").removeClass("alert-" + status);
-        }, 3600);
     });
 });
 
@@ -57,13 +58,56 @@ function loadUsers() {
                     <td>` + users[i].senha + `</td>
                     <td>` + users[i].permissao + `</td>
                     <td>` + users[i].ativo + `</td>
-                    <td><a href="main.php?folder=users/&file=frmupd.php&id=` + users[i].id + `"><img src="../assets/images/editar.png" height="20px" width="20px"></a></td>
-                    <td><button onclick="return valDel('usuário', '` + users[i].usuario + `', ` + users[i].id + `)"><img src="../assets/images/excluir.png" height="20px" width="20px"></button></td>
+                    <td><button class="btn btn-warning" onclick="updateUser(` + users[i].id + `)"><img src="../assets/images/editar.png" height="20px" width="20px"></button></td>
+                    <td><button class="btn btn-danger" onclick="return valDel('usuário', '` + users[i].usuario + `', ` + users[i].id + `)"><img src="../assets/images/excluir.png" height="20px" width="20px"></button></td>
                 </tr>
             `);
         }
     });
 };
+
+function updateUser(userId) {
+    $.ajax({
+        method: 'POST',
+        url: 'users/load.php',
+        data: {id: userId}
+    }).done((result) => {
+        var user = JSON.parse(result);
+        $("#upd-idemail").val(user.email);
+        $("#upd-idusuario").val(user.usuario);
+    })
+
+    $("#upd-user-modal").modal('show');
+
+    $("#btn-submit-form-upduser").click(() => {
+
+        var email = $('#upd-idemail').val(); //armazenando as entradas do usuário
+        var usuario = $('#upd-idusuario').val();
+        var senha = $('#upd-idsenha').val();
+    
+        $.ajax({
+            method: 'POST',
+            url: 'users/upd.php',
+            data: {id: userId, email: email, usuario: usuario, senha: senha}
+        }).done(function(result) {
+            loadUsers();
+            $("#upd-alert").removeClass(); //remove todas as classes
+    
+            if (result == "Alteração efetuada com sucesso!") {
+                $("#form-upduser").trigger("reset"); //limpa os inputs do formulário
+                var status = "success";
+            } else {
+                var status = "danger";
+            }
+    
+            $("#upd-alert").addClass("alert alert-" + status).html(result).fadeIn(300); //apresenta o alerta
+    
+            setTimeout(() => { //remove o alerta
+                $("#upd-alert").fadeOut(300);
+            }, 3000);
+        });
+    })
+}
 
 function deleteUser(userId) {
     $.ajax({
@@ -75,6 +119,11 @@ function deleteUser(userId) {
         showMessagesModal('Atenção!', result)
     });
 }
+// PAGE - USERS
+
+$(".btn-close-form-modal").click(() => {
+    $('form').trigger("reset"); //limpa os inputs do formulário
+});
 
 function showMessagesModal(title, message) {
     $("#messages-modal-title").html(title);

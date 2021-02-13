@@ -1,14 +1,12 @@
 <?php    
-    include "../../security/authentication/validationapp.php";
+    include "../../security/database/connection.php";
 
     $id = $_POST['id'];
     $email = $_POST['email'];
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
-    $link = "main.php?folder=users/&file=frmupd.php" . "&id=" . $id;
     $msg = '';
-    $status = "danger";
 
     if ($email == '') {
         $msg = "Preencha o campo e-mail.";
@@ -48,19 +46,15 @@
 
                 if ($result) {
                     $msg = "Alteração efetuada com sucesso!";
-                    $status = "success";
                 } else {
                     $msg = "Falha ao alterar!";
                 }
-                $link = "main.php?folder=users/&file=frmins.php";
             } else {
                 $msg = "Este usuário já está cadastrado no banco de dados.";
-                $status = "warning";
             }
         } else {
             $msg = "Este email já está cadastrado no banco de dados.";
-            $status = "warning";
         }
     }
-    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
+    echo $msg;
 ?>
