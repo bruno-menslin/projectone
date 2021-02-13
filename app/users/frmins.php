@@ -14,8 +14,8 @@
             <label for="idsenha">Senha</label>
             <input type="password" class="form-control" id="idsenha" name="senha">
         </div>
-        <button type="reset" class="btn btn-warning">Limpar</button>
-        <button type="submit" class="btn btn-success">Enviar</button>
+        <button type="reset" class="btn btn-secondary">Limpar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
     <div id="alert" class="alert" role="alert"></div>
     <br>

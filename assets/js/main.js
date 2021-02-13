@@ -41,12 +41,13 @@ $('#form-insuser').submit(() => { //quando o botão 'enviar' for clicado
 });
 
 function loadUsers() {
-    $("#tbody-users").html('');
     $.ajax({
         method: 'GET',
         url: 'users/load.php',
         dataType: 'json'
     }).done(function(users) {
+        $("#tbody-users").html(""); //limpar a tabela antes de exibir
+
         for (var i = 0; i < users.length; i++) {
             $("#tbody-users").prepend(`
                 <tr>
@@ -57,14 +58,44 @@ function loadUsers() {
                     <td>` + users[i].permissao + `</td>
                     <td>` + users[i].ativo + `</td>
                     <td><a href="main.php?folder=users/&file=frmupd.php&id=` + users[i].id + `"><img src="../assets/images/editar.png" height="20px" width="20px"></a></td>
-                    <td><a href="main.php?folder=users/&file=del.php&id=` + users[i].id + `" onclick="return valDel('usuário', '` + users[i].usuario + `')"><img src="../assets/images/excluir.png" height="20px" width="20px"></a></td>
+                    <td><button onclick="return valDel('usuário', '` + users[i].usuario + `', ` + users[i].id + `)"><img src="../assets/images/excluir.png" height="20px" width="20px"></button></td>
                 </tr>
             `);
         }
     });
 };
 
-function valDel(oque, qual) {
-    resp = confirm("Deseja excluir o(a) " + oque + ": " + qual + "?")
-    return resp // true (ok) | false (cancelar)
+function deleteUser(userId) {
+    $.ajax({
+        method: 'POST',
+        url: 'users/del.php',
+        data: {id: userId}
+    }).done(function(result) {
+        loadUsers();
+        showMessagesModal('Atenção!', result)
+    });
+}
+
+function showMessagesModal(title, message) {
+    $("#messages-modal-title").html(title);
+    $("#messages-modal-body").html(message);
+    $("#messages-modal").modal('show');
+}
+
+function showConfirmModal(title, message) {
+    $("#confirm-modal-title").html(title);
+    $("#confirm-modal-body").html(message);
+    $("#confirm-modal").modal('show');
+}
+
+function valDel(what, which, id) {
+    showConfirmModal('Atenção!', 'Deseja excluir o(a) ' + what + ': ' + which + '?');
+
+    $("#confirm-modal-btn-confirm").click(()=> {
+        switch (what) {
+            case 'usuário':
+                deleteUser(id);
+                break;
+        }   
+    });    
 }

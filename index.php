@@ -30,17 +30,17 @@
                     </form>
                     <?php 
                         if (isset($_GET['mensagem'])) {
-                            echo "<script> $(document).ready( ()=>$('#modalAtencao').modal('show') ) </script>";
+                            echo "<script> $(document).ready( ()=>$('#index-modal').modal('show') ) </script>";
                         }
                     ?>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalAtencao" tabindex="-1" role="dialog" aria-labelledby="modalAtencaoCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="index-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Atenção!</h5>
+                        <h5 class="modal-title">Atenção!</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

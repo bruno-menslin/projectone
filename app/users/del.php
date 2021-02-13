@@ -1,11 +1,8 @@
 <?php    
-    include "../../security/authentication/validationapp.php";
+    include "../../security/database/connection.php";
     
-    $id = $_GET['id'];
-    
-    $link = "main.php?folder=users/&file=frmins.php";
+    $id = $_POST['id'];
     $msg = '';
-    $status = "success";
 
     $sql = "DELETE FROM usuarios WHERE id = :id";
 
@@ -17,7 +14,6 @@
         $msg = "Usuário excluído com sucesso!";
     } else {
         $msg = "Falha ao excluir usuário!";
-        $status = "danger";
     }
-    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
+    echo $msg;
 ?>

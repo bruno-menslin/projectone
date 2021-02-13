@@ -1,6 +1,5 @@
 <?php
     include "../../security/database/connection.php";
-    // include "../../security/authentication/validation.php";
 
     $sql = "SELECT * FROM usuarios"; // sintaxe sql
 

@@ -1,6 +1,5 @@
 <?php
     include "../../security/database/connection.php";
-    include "../../security/authentication/validation.php";
     
     $id = null; // bindParam só aceita variáveis
     $email = $_POST['email'];
