@@ -26,7 +26,6 @@ function loadUsers() {
 
 $(document).ready(() => { //quando o documento for carregado
     loadUsers()
-    $('#form-modal-alert').fadeToggle(0) //começar não ocupando espaço
 })
 
 function insertUser() {
@@ -35,15 +34,15 @@ function insertUser() {
 
         <div class="form-group">
             <label for="input-email">E-mail</label>
-            <input type="text" class="form-control" id="input-email" name="email">
+            <input id="input-email" type="text" class="form-control">
         </div>
         <div class="form-group">
             <label for="input-username">Usuário</label>
-            <input type="text" class="form-control" id="input-username" name="usuario">
+            <input id="input-username" type="text" class="form-control">
         </div>
         <div class="form-group">
             <label for="input-password">Senha</label>
-            <input type="password" class="form-control" id="input-password" name="senha">
+            <input id="input-password" type="password" class="form-control">
         </div>
 
     `)
@@ -78,7 +77,7 @@ function updateUser(userId) {
         data: {id: userId}
 
     }).done((result) => {
-        var user = JSON.parse(result) //transformar a string em array
+        const user = JSON.parse(result) //transformar a string em array
         $('#input-email').val(user.email)
         $('#input-username').val(user.usuario) //!!trocar para ingles!!
     })    
@@ -151,7 +150,7 @@ function deleteUser(userId) {
         url: 'users/del.php',
         data: {id: userId}
 
-    }).done(function(result) {
+    }).done((result) => {
         loadUsers()
         showMessagesModal('Atenção!', result)
     })

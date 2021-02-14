@@ -1,3 +1,7 @@
+$(document).ready(() => {
+    $('#form-modal-alert').fadeToggle(0) //começar não ocupando espaço
+})
+
 $('form').submit(function(e) { //remover comportamento padrão dos formulários
     e.preventDefault(); //'e' de evento
 });
@@ -28,9 +32,11 @@ function showFormModal(title, form) {
     $("#form-modal").modal('show');
 }
 
-$("#form-modal-close").click(() => {
+$('#form-modal').on('hidden.bs.modal', () => { //quando o formulario for fechado
     $('form').trigger("reset"); //limpa os inputs do formulário
-});
+    $('#form-modal-alert').removeClass()
+    $('#form-modal-alert').html('')
+})
 // ---- MODALS ----
 
 function confirmDelete(what, id) { //antes o nome era 'valDel'
@@ -39,8 +45,11 @@ function confirmDelete(what, id) { //antes o nome era 'valDel'
     $("#confirm-modal-btn-confirm").click(()=> {
         switch (what) {
             case 'usuário':
-                deleteUser(id);
-                break;
+                deleteUser(id)
+                break
+            case 'categoria':
+                deleteCategory(id)
+                break
         }   
     });    
 }

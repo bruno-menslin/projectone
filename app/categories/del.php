@@ -1,11 +1,8 @@
 <?php   
-    include "../../security/authentication/validationapp.php";
+    include "../../security/database/connection.php";
     
-    $id = $_GET['id'];
-    
-    $link = "main.php?folder=categories/&file=frmins.php";
+    $id = $_POST['id'];
     $msg = '';
-    $status = "success";
 
     $sql = "SELECT modelo FROM produtos WHERE categorias_id = :id";
 
@@ -24,11 +21,9 @@
             $msg = "Categoria excluída com sucesso!";
         } else {
             $msg = "Falha ao excluir categoria!";
-            $status = "danger";
         }
     } else {
         $msg = "Existem produtos vinculados à esta categoria.";
-        $status = "warning";
     }
-    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
+    echo $msg;
 ?>

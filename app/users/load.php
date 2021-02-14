@@ -7,8 +7,6 @@
 
         $stm_sql = $db_connection -> prepare($sql); // transforma a sintaxe em intrução e armazena na variável $stm_sql
 
-        if ($id != "") { $stm_sql -> bindParam(':id', $id); }
-
         $stm_sql -> execute(); // executa a instrução
 
         $users = $stm_sql -> fetchAll(PDO::FETCH_ASSOC); // busca todo o retorno da execução, de maneira nominal, e armazena na variável users

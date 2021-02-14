@@ -1,18 +1,16 @@
-<?php
-    include "../../security/authentication/validationapp.php";
+<?php    
+    include "../../security/database/connection.php";
     
     $id = null;
-    $nome = $_POST['nome'];
-    $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
+    $nome = $_POST['name'];
+    $descricao = ($_POST['description'] != '') ? $_POST['description'] : null;
     
-    $link = "main.php?folder=categories/&file=frmins.php";
     $msg = '';
-    $status = "danger";
 
     if ($nome == '') {
         $msg = "Preencha o campo nome.";
     } else {
-        $sql = "SELECT * FROM categorias WHERE nome = :nome";
+        $sql = "SELECT * FROM categorias WHERE nome = :nome"; //verificar se o nome da categoria ja existe no banco
 
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> bindParam(':nome', $nome);
@@ -30,14 +28,12 @@
 
             if ($result) {
                 $msg = "Cadastro efetuado com sucesso!";
-                $status = "success";
             } else {
                 $msg = "Falha ao cadastrar!";
             }
         } else {
             $msg = "Esta categoria já está cadastrada no banco de dados.";
-            $status = "warning";
         }
     }
-    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
+    echo $msg;
 ?>

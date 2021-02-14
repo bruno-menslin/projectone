@@ -1,13 +1,11 @@
 <?php    
-    include "../../security/authentication/validationapp.php";
+    include "../../security/database/connection.php";
     
     $id = $_POST['id'];
-    $nome = $_POST['nome'];
-    $descricao = ($_POST['descricao'] != '') ? $_POST['descricao'] : null;
+    $nome = $_POST['name'];
+    $descricao = ($_POST['description'] != '') ? $_POST['description'] : null;
 
-    $link = "main.php?folder=categories/&file=frmupd.php" . "&id=" . $id;
     $msg = '';
-    $status = "danger";
 
     if ($nome == '') {
         $msg = "Preencha o campo nome.";
@@ -31,15 +29,12 @@
             
             if ($result) {
                 $msg = "Alteração efetuada com sucesso!";
-                $status = "success";
             } else {
                 $msg = "Falha ao alterar!";
             }
-            $link = "main.php?folder=categories/&file=frmins.php";
         } else {
             $msg = "Esta categoria já está cadastrada no banco de dados.";
-            $status = "warning";
         }
     }
-    header("Location: " . $link . "&mensagem=" . $msg . "&status=" . $status);
+    echo $msg;
 ?>
