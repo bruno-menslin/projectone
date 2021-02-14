@@ -17,7 +17,6 @@
     } else {
         // verificar se o email inserido já existe no banco
         $sql = "SELECT * FROM usuarios WHERE email = :email AND id <> :id";
-
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> bindParam(':email', $email);
         $stm_sql -> bindParam(':id', $id);
@@ -26,7 +25,6 @@
         if ($stm_sql -> rowCount() == 0) {
             // verificar se o usuário inserido já existe no banco
             $sql = "SELECT * FROM usuarios WHERE usuario = :usuario AND id <> :id";
-
             $stm_sql = $db_connection -> prepare($sql);
             $stm_sql -> bindParam(':usuario', $usuario);
             $stm_sql -> bindParam(':id', $id);
@@ -35,13 +33,11 @@
             if ($stm_sql -> rowCount() == 0) {
                 // atualizar o cadastro do usuário no banco
                 $sql = "UPDATE usuarios SET email = :email, usuario = :usuario, senha = :senha WHERE id = :id";
-
                 $stm_sql = $db_connection -> prepare($sql);
                 $stm_sql -> bindParam(':email', $email);
                 $stm_sql -> bindParam(':usuario', $usuario);
                 $stm_sql -> bindParam(':senha', md5($senha));
                 $stm_sql -> bindParam(':id', $id);
-                
                 $result = $stm_sql -> execute();
 
                 if ($result) {
