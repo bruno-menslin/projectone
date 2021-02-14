@@ -3,7 +3,7 @@
 <div class="col-sm-12 col-lg-12">
     <div class="d-flex justify-content-between">
         <a href="main.php" class="btn btn-secondary">Voltar</a>
-        <button id="btn-add-user" class="btn btn-primary">Cadastrar novo usuário</button>
+        <button onclick="insertUser()" class="btn btn-primary">Cadastrar novo usuário</button>
     </div>
     <br>    
     <h2>Usuários Cadastrados</h2>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,4 +93,21 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<!---->   
+
+<!-- <form id="form-upduser" name="upduser" action="#">
+    <div class="form-group">
+        <label for="idemail">E-mail</label>
+        <input type="text" class="form-control" id="upd-idemail" name="email">
+    </div>
+    <div class="form-group">
+        <label for="idusuario">Usuário</label>
+        <input type="text" class="form-control" id="upd-idusuario" name="usuario">
+    </div>
+    <div class="form-group">
+        <label for="idsenha">Senha</label>
+        <input type="password" class="form-control" id="upd-idsenha" name="senha">
+    </div>
+</form> -->

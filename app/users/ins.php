@@ -3,8 +3,8 @@
     
     $id = null; // bindParam só aceita variáveis
     $email = $_POST['email'];
-    $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+    $usuario = $_POST['username'];
+    $senha = $_POST['password'];
     $permissao = 0;
     $ativo = 0;
 

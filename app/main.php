@@ -97,7 +97,29 @@
             </div>
         </div>
 
+        <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="form-modal-title" class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-modal-form" action="#"></form>
+                        <div id="form-modal-alert" class="alert" role="alert"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="form-modal-close" class="btn btn-secondary btn-close-form-modal" type="button" data-dismiss="modal">Fechar</button>
+                        <button id="form-modal-submit" class="btn btn-primary" type="submit" form="form-modal-form"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="../assets/js/bootstrap.js"></script>
         <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/<?php echo str_replace("/", "", $_GET['folder']); ?>.js"></script>
     </body>
 </html>

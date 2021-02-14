@@ -3,8 +3,8 @@
 
     $id = $_POST['id'];
     $email = $_POST['email'];
-    $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+    $usuario = $_POST['username'];
+    $senha = $_POST['password'];
 
     $msg = '';
 
@@ -45,9 +45,9 @@
                 $result = $stm_sql -> execute();
 
                 if ($result) {
-                    $msg = "Alteração efetuada com sucesso!";
+                    $msg = "Atualização efetuada com sucesso!";
                 } else {
-                    $msg = "Falha ao alterar!";
+                    $msg = "Falha ao atualizar!";
                 }
             } else {
                 $msg = "Este usuário já está cadastrado no banco de dados.";
