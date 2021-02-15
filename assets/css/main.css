@@ -37,6 +37,11 @@ h2 {
     margin-top: 20px;
 }
 
+#navbar-logo {
+    font-family: 'Lato';
+    font-size: 30px;
+}
+
 @media (min-width: 990px) and (max-width: 1400px) {
     .div-form-title {
         margin-right: 2rem;
