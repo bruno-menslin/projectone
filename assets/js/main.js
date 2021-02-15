@@ -50,6 +50,9 @@ function confirmDelete(what, id) { //antes o nome era 'valDel'
             case 'categoria':
                 deleteCategory(id)
                 break
+            case 'produto':
+                deleteProduct(id)
+                break
         }   
     });    
 }

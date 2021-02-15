@@ -74,12 +74,12 @@ function updateUser(userId) {
     $.ajax({
         method: 'POST',
         url: 'users/load.php',
-        data: {id: userId}
+        data: {id: userId},
+        dataType: 'json'
 
-    }).done((result) => {
-        const user = JSON.parse(result) //transformar a string em array
+    }).done((user) => {
         $('#input-email').val(user.email)
-        $('#input-username').val(user.usuario) //!!trocar para ingles!!
+        $('#input-username').val(user.usuario)
     })    
 
     $('#form-modal-submit').html('Atualizar')
@@ -130,7 +130,6 @@ $('#form-modal-form').submit(() => { //quando o formulario do modal for enviado
     
             if (result == 'Atualização efetuada com sucesso!') {
                 loadUsers()
-                $('#form-modal-form').trigger('reset')
                 $('#form-modal').modal('hide')
                 showMessagesModal('Atenção!', result)
             } else {
