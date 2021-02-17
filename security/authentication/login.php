@@ -1,8 +1,7 @@
 <?php
-    $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+    $usuario = $_POST['username'];
+    $senha = $_POST['password'];
 
-    $link = "../../index.php"; 
     $msg = '';
 
     if ($usuario == '') {
@@ -25,10 +24,10 @@
             $_SESSION['senha'] = md5($senha);
             $_SESSION['idsessao'] = session_id();
 
-            $link = "../../app/main.php";
+            $msg = "app/main.php";
         } else {
             $msg = "Usuário ou senha incorretos.";
         }
     }
-    header("Location: " . $link . "?mensagem=" . $msg); // nunca usar mais de um header na mesma página
+    echo $msg;
 ?>
