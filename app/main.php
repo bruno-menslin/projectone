@@ -30,7 +30,7 @@
                             <a class="nav-link" href="main.php?folder=categories/&file=categories.php">Categorias<!--<span class="sr-only">(Página atual)</span>--></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="main.php?folder=products/&file=frmins.php">Produtos</a>
+                            <a class="nav-link" href="main.php?folder=products/&file=products.php">Produtos</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
