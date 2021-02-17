@@ -4,7 +4,7 @@ function loadUsers() {
         url: 'users/load.php',
         dataType: 'json'
 
-    }).done(function(users) {
+    }).done((users) => {
         $('#tbody-users').html(''); //limpar a tabela antes de exibir
 
         for (var i = 0; i < users.length; i++) {
@@ -102,7 +102,7 @@ $('#form-modal-form').submit(() => { //quando o formulario do modal for enviado
             url: 'users/ins.php',
             data: {email: email, username: username, password: password}
 
-        }).done(function(result) {
+        }).done((result) => {
             $('#form-modal-alert').removeClass() //remove todas as classes
 
             if (result == 'Cadastro efetuado com sucesso!') {
@@ -127,7 +127,7 @@ $('#form-modal-form').submit(() => { //quando o formulario do modal for enviado
             url: 'users/upd.php',
             data: {id: id, email: email, username: username, password: password}
 
-        }).done(function(result) {
+        }).done((result) => {
             $('#form-modal-alert').removeClass()
     
             if (result == 'Atualização efetuada com sucesso!') {

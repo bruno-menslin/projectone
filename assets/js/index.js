@@ -8,7 +8,7 @@ $('#form-login').submit(() => {
         url: 'security/authentication/login.php',
         data: {username: username, password: password}
 
-    }).done(function(result) {
+    }).done((result) => {
         if (result.includes('/')) {
             window.location.href = result
         } else {

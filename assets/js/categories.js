@@ -4,7 +4,7 @@ function loadCategories() {
         url: 'categories/load.php',
         dataType: 'json'
 
-    }).done(function(categories) {
+    }).done((categories) => {
         $('#tbody-categories').html('');
 
         for (i = 0; i < categories.length; i++) {
@@ -88,7 +88,7 @@ $('#form-modal-form').submit(() => {
             url: 'categories/ins.php',
             data: {name: name, description: description}
 
-        }).done(function(result) {
+        }).done((result) => {
             $('#form-modal-alert').removeClass()
 
             if (result == 'Cadastro efetuado com sucesso!') {
@@ -112,7 +112,7 @@ $('#form-modal-form').submit(() => {
             url: 'categories/upd.php',
             data: {id: id, name: name, description: description}
 
-        }).done(function(result) {
+        }).done((result) => {
             $('#form-modal-alert').removeClass()
 
             if (result == 'Alteração efetuada com sucesso!') {
