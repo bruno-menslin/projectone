@@ -6,6 +6,9 @@
   Aplicação de gerenciamento de produtos e usuários.
 </p>
 
+## BANCO DE DADOS
+![](assets/images/database.png)
+
 ## CAPTURAS DE TELA
 ***Cadastro de produtos***
 ![](assets/images/insert-product.png)
