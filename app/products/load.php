@@ -1,26 +1,26 @@
 <?php
     include "../../security/database/connection.php";
-    $codigo = $_POST['code'];
+    $code = $_POST['code'];
 
-    if ($codigo == 'categories') { //todas as categorias
+    if ($code == 'categories') { //todas as categories
 
-        $sql = "SELECT id, nome FROM categorias";
+        $sql = "SELECT id, name FROM categories";
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> execute();
         $data = $stm_sql -> fetchAll(PDO::FETCH_ASSOC);
 
-    } else if ($codigo == "") { //todos os produtos
+    } else if ($code == "") { //todos os products
 
-        $sql = "SELECT codigo, categorias.nome, modelo, valor, produtos.descricao FROM produtos INNER JOIN categorias ON produtos.categorias_id = categorias.id";
+        $sql = "SELECT code, categories.name, model, value, products.description FROM products INNER JOIN categories ON products.categories_id = categories.id";
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> execute();
         $data = $stm_sql -> fetchAll(PDO::FETCH_ASSOC);
 
     } else { //produto em alteracao
 
-        $sql = "SELECT modelo, valor, descricao, categorias_id FROM produtos WHERE codigo = :codigo";
+        $sql = "SELECT model, value, description, categories_id FROM products WHERE code = :code";
         $stm_sql = $db_connection -> prepare($sql);
-        $stm_sql -> bindParam(':codigo', $codigo);
+        $stm_sql -> bindParam(':code', $code);
         $stm_sql -> execute();
         $data = $stm_sql -> fetch(PDO::FETCH_ASSOC);
 

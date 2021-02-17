@@ -1,28 +1,28 @@
 <?php
-    $usuario = $_POST['username'];
-    $senha = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     $msg = '';
 
-    if ($usuario == '') {
+    if ($username == '') {
         $msg = "Preencha o campo usuário.";
-    } else if ($senha == '') {
+    } else if ($password == '') {
         $msg = "Preencha o campo senha.";
     } else {
         include "../database/connection.php";
 
-        $sql = "SELECT usuario, senha FROM usuarios WHERE usuario = :usuario AND senha = :senha";
+        $sql = "SELECT username, password FROM users WHERE username = :username AND password = :password";
         
         $stm_sql = $db_connection -> prepare($sql);
-        $stm_sql -> bindParam(':usuario', $usuario);
-        $stm_sql -> bindParam(':senha', md5($senha));
+        $stm_sql -> bindParam(':username', $username);
+        $stm_sql -> bindParam(':password', md5($password));
         $stm_sql -> execute();
 
         if ($stm_sql -> rowCount() == 1) {
             session_start();
-            $_SESSION['usuario'] = $usuario;
-            $_SESSION['senha'] = md5($senha);
-            $_SESSION['idsessao'] = session_id();
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = md5($password);
+            $_SESSION['id'] = session_id();
 
             $msg = "app/main.php";
         } else {

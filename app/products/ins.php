@@ -1,37 +1,37 @@
 <?php    
     include "../../security/database/connection.php";
     
-    $codigo = NULL;
-    $modelo = $_POST['model'];
-    $valor = $_POST['value'];
-    $descricao = ($_POST['description'] != '') ? $_POST['description'] : NULL;
-    $categoria_id = $_POST['category_id'];
+    $code = NULL;
+    $model = $_POST['model'];
+    $value = $_POST['value'];
+    $description = ($_POST['description'] != '') ? $_POST['description'] : NULL;
+    $category_id = $_POST['category_id'];
 
     $msg = '';
 
-    if ($categoria_id == '') {
+    if ($category_id == '') {
         $msg = 'Selecione uma categoria.';
-    } else if ($modelo == '') {
+    } else if ($model == '') {
         $msg = 'Preencha o campo modelo.';
-    } else if ($valor == '') {
+    } else if ($value == '') {
         $msg = 'Preencha o campo valor.';
     } else {
 
-        $sql = "SELECT * FROM produtos WHERE modelo = :modelo AND categorias_id = :categoria_id";
+        $sql = "SELECT * FROM products WHERE model = :model AND categories_id = :category_id";
         $stm_sql = $db_connection -> prepare($sql);
-        $stm_sql -> bindParam(':modelo', $modelo);
-        $stm_sql -> bindParam(':categoria_id', $categoria_id);
+        $stm_sql -> bindParam(':model', $model);
+        $stm_sql -> bindParam(':category_id', $category_id);
         $stm_sql -> execute();
 
         if ($stm_sql -> rowCount() == 0) {
 
-            $sql = "INSERT INTO produtos VALUES (:codigo, :modelo, :valor, :descricao, :categoria_id)";
+            $sql = "INSERT INTO products VALUES (:code, :model, :value, :description, :category_id)";
             $stm_sql = $db_connection -> prepare($sql);
-            $stm_sql -> bindParam(':codigo', $codigo);
-            $stm_sql -> bindParam(':modelo', $modelo);
-            $stm_sql -> bindParam(':valor', $valor);
-            $stm_sql -> bindParam(':descricao', $descricao);
-            $stm_sql -> bindParam(':categoria_id', $categoria_id);
+            $stm_sql -> bindParam(':code', $code);
+            $stm_sql -> bindParam(':model', $model);
+            $stm_sql -> bindParam(':value', $value);
+            $stm_sql -> bindParam(':description', $description);
+            $stm_sql -> bindParam(':category_id', $category_id);
             $result = $stm_sql -> execute();
 
             if ($result) {

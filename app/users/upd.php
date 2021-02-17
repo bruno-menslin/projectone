@@ -3,20 +3,20 @@
 
     $id = $_POST['id'];
     $email = $_POST['email'];
-    $usuario = $_POST['username'];
-    $senha = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     $msg = '';
 
     if ($email == '') {
         $msg = "Preencha o campo e-mail.";
-    } else if ($usuario == '') {
+    } else if ($username == '') {
         $msg = "Preencha o campo usuário.";
-    } else if ($senha == '') {
+    } else if ($password == '') {
         $msg = "Preencha o campo senha.";
     } else {
         // verificar se o email inserido já existe no banco
-        $sql = "SELECT * FROM usuarios WHERE email = :email AND id <> :id";
+        $sql = "SELECT * FROM users WHERE email = :email AND id <> :id";
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> bindParam(':email', $email);
         $stm_sql -> bindParam(':id', $id);
@@ -24,19 +24,19 @@
 
         if ($stm_sql -> rowCount() == 0) {
             // verificar se o usuário inserido já existe no banco
-            $sql = "SELECT * FROM usuarios WHERE usuario = :usuario AND id <> :id";
+            $sql = "SELECT * FROM users WHERE username = :username AND id <> :id";
             $stm_sql = $db_connection -> prepare($sql);
-            $stm_sql -> bindParam(':usuario', $usuario);
+            $stm_sql -> bindParam(':username', $username);
             $stm_sql -> bindParam(':id', $id);
             $stm_sql -> execute();
 
             if ($stm_sql -> rowCount() == 0) {
                 // atualizar o cadastro do usuário no banco
-                $sql = "UPDATE usuarios SET email = :email, usuario = :usuario, senha = :senha WHERE id = :id";
+                $sql = "UPDATE users SET email = :email, username = :username, password = :password WHERE id = :id";
                 $stm_sql = $db_connection -> prepare($sql);
                 $stm_sql -> bindParam(':email', $email);
-                $stm_sql -> bindParam(':usuario', $usuario);
-                $stm_sql -> bindParam(':senha', md5($senha));
+                $stm_sql -> bindParam(':username', $username);
+                $stm_sql -> bindParam(':password', md5($password));
                 $stm_sql -> bindParam(':id', $id);
                 $result = $stm_sql -> execute();
 
@@ -49,7 +49,7 @@
                 $msg = "Este usuário já está cadastrado no banco de dados.";
             }
         } else {
-            $msg = "Este email já está cadastrado no banco de dados.";
+            $msg = "Este e-mail já está cadastrado no banco de dados.";
         }
     }
     echo $msg;

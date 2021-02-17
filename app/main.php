@@ -51,8 +51,8 @@
                     } else {
                 ?>
                         <div class="col-md-12 mt-3">
-                            <h1>Bem vindo <?php echo $_SESSION['usuario']; ?>!</h1>
-                            <h6><?php echo $_SESSION['idsessao']; ?></h6>
+                            <h1>Bem vindo <?php echo $_SESSION['username']; ?>!</h1>
+                            <h6><?php echo $_SESSION['id']; ?></h6>
                         </div>
                 <?php
                     }

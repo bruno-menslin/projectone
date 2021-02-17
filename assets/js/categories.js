@@ -8,11 +8,11 @@ function loadCategories() {
         $('#tbody-categories').html('');
 
         for (i = 0; i < categories.length; i++) {
-            let description = (categories[i].descricao == null) ? '-' : categories[i].descricao
+            let description = (categories[i].description == null) ? '-' : categories[i].description
             $('#tbody-categories').prepend(`
                 <tr>
                     <th scope="row">` + categories[i].id + `</th>
-                    <td>` + categories[i].nome + `</td>
+                    <td>` + categories[i].name + `</td>
                     <td>` + description + `</td>
                     <td><button onclick="updateCategory(` + categories[i].id + `)" class="btn btn-warning" ><img src="../assets/images/editar.png" height="20px" width="20px"></button></td>
                     <td><button onclick="confirmDelete('categoria', ` + categories[i].id + `)" class="btn btn-danger"><img src="../assets/images/excluir.png" height="20px" width="20px"></button></td>
@@ -63,12 +63,12 @@ function updateCategory(categoryId) {
     $.ajax({
         method: 'POST',
         url: 'categories/load.php',
-        data: {id: categoryId}
+        data: {id: categoryId},
+        dataType: 'json'
 
-    }).done((result) => {
-        const category = JSON.parse(result) //string em array
-        $('#input-name').val(category.nome)
-        $('#input-description').val(category.descricao)
+    }).done((category) => {
+        $('#input-name').val(category.name)
+        $('#input-description').val(category.description)
     })
 
     $('#form-modal-submit').html('Atualizar')

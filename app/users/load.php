@@ -3,7 +3,7 @@
     $id = $_POST['id'];
 
     if ($id == "") {
-        $sql = "SELECT * FROM usuarios"; // sintaxe sql
+        $sql = "SELECT * FROM users"; // sintaxe sql
 
         $stm_sql = $db_connection -> prepare($sql); // transforma a sintaxe em intrução e armazena na variável $stm_sql
 
@@ -13,7 +13,7 @@
 
         echo json_encode($users);
     } else {
-        $sql = "SELECT email, usuario FROM usuarios WHERE id = :id";
+        $sql = "SELECT email, username FROM users WHERE id = :id";
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> bindParam(':id', $id);
         $stm_sql -> execute();

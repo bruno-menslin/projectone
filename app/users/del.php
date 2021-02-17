@@ -4,7 +4,7 @@
     $id = $_POST['id'];
     $msg = '';
 
-    $sql = "DELETE FROM usuarios WHERE id = :id";
+    $sql = "DELETE FROM users WHERE id = :id";
     $stm_sql = $db_connection -> prepare($sql);
     $stm_sql -> bindParam(':id', $id);
     $result = $stm_sql -> execute();

@@ -8,14 +8,14 @@ function loadUsers() {
         $('#tbody-users').html(''); //limpar a tabela antes de exibir
 
         for (var i = 0; i < users.length; i++) {
-            let permission = (users[i].permissao == 1) ? 'Adm' : 'Comum'
-            let active = (users[i].ativo == 0) ? 'Ativo' : 'Inativo'
+            let permission = (users[i].permission == 1) ? 'Adm' : 'Comum'
+            let active = (users[i].active == 0) ? 'Ativo' : 'Inativo'
             $('#tbody-users').prepend(`
                 <tr>
                     <th scope="row">` + users[i].id + `</th>
                     <td>` + users[i].email + `</td>
-                    <td>` + users[i].usuario + `</td>
-                    <td>` + users[i].senha + `</td>
+                    <td>` + users[i].username + `</td>
+                    <td>` + users[i].password + `</td>
                     <td>` + permission + `</td>
                     <td>` + active + `</td>
                     <td><button onclick="updateUser(` + users[i].id + `)" class="btn btn-warning" ><img src="../assets/images/editar.png" height="20px" width="20px"></button></td>
@@ -81,7 +81,7 @@ function updateUser(userId) {
 
     }).done((user) => {
         $('#input-email').val(user.email)
-        $('#input-username').val(user.usuario)
+        $('#input-username').val(user.username)
     })    
 
     $('#form-modal-submit').html('Atualizar')

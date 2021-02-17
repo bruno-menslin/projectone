@@ -8,17 +8,17 @@ function loadProducts() {
         $('#tbody-products').html('')
 
         for (i = 0; i < products.length; i++) {
-            let description = (products[i].descricao == null) ? '-' : products[i].descricao
+            let description = (products[i].description == null) ? '-' : products[i].description
             $('#tbody-products').prepend(`
 
                 <tr>
-                    <th scope="row">` + products[i].codigo + `</th>
-                    <td>` + products[i].nome + `</td>
-                    <td>` + products[i].modelo + `</td>
-                    <td>` + products[i].valor + `</td>
+                    <th scope="row">` + products[i].code + `</th>
+                    <td>` + products[i].name + `</td>
+                    <td>` + products[i].model + `</td>
+                    <td>` + products[i].value + `</td>
                     <td>` + description + `</td>
-                    <td><button onclick="updateProduct(` + products[i].codigo + `)" class="btn btn-warning" ><img src="../assets/images/editar.png" height="20px" width="20px"></button></td>
-                    <td><button onclick="confirmDelete('produto', ` + products[i].codigo + `)" class="btn btn-danger"><img src="../assets/images/excluir.png" height="20px" width="20px"></button></td>
+                    <td><button onclick="updateProduct(` + products[i].code + `)" class="btn btn-warning" ><img src="../assets/images/editar.png" height="20px" width="20px"></button></td>
+                    <td><button onclick="confirmDelete('produto', ` + products[i].code + `)" class="btn btn-danger"><img src="../assets/images/excluir.png" height="20px" width="20px"></button></td>
                 </tr>
 
             `)
@@ -64,7 +64,7 @@ function insertProduct() {
     }).done((categories) => {
         for (i = 0; i < categories.length; i++) {
             $('#input-category').prepend(`
-                <option value="` + categories[i].id + `">` + categories[i].nome + `</option>
+                <option value="` + categories[i].id + `">` + categories[i].name + `</option>
             `)
         }
     })
@@ -118,16 +118,16 @@ function updateProduct(productCode) {
             let selected = '';
     
             for (i = 0; i < categories.length; i++) {
-                selected = (categories[i].id == product.categorias_id) ? 'selected' : '';
+                selected = (categories[i].id == product.categories_id) ? 'selected' : '';
                 $('#input-category').prepend(`
-                    <option value="` + categories[i].id + `" ` + selected + `>` + categories[i].nome + `</option>
+                    <option value="` + categories[i].id + `" ` + selected + `>` + categories[i].name + `</option>
                 `)
             }
         })
 
-        $('#input-model').val(product.modelo)
-        $('#input-value').val(product.valor)
-        $('#input-description').val(product.descricao)
+        $('#input-model').val(product.model)
+        $('#input-value').val(product.value)
+        $('#input-description').val(product.description)
     })
 
     $('#form-modal-submit').html('Atualizar')

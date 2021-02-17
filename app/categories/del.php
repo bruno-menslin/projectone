@@ -4,14 +4,14 @@
     $id = $_POST['id'];
     $msg = '';
 
-    $sql = "SELECT modelo FROM produtos WHERE categorias_id = :id";
+    $sql = "SELECT model FROM products WHERE categories_id = :id";
     $stm_sql = $db_connection -> prepare($sql);
     $stm_sql -> bindParam(':id', $id);
     $stm_sql -> execute();
 
     if ($stm_sql -> rowCount() == 0) {
         
-        $sql = "DELETE FROM categorias WHERE id = :id";
+        $sql = "DELETE FROM categories WHERE id = :id";
         $stm_sql = $db_connection -> prepare($sql);
         $stm_sql -> bindParam(':id', $id);
         $result = $stm_sql -> execute();
